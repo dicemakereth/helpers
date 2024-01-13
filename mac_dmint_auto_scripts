@@ -1,0 +1,13 @@
+-- 打开终端窗口的数量
+set numberOfTerminals to 20
+
+-- 循环打开终端窗口并执行命令
+repeat numberOfTerminals times
+	tell application "Terminal"
+		activate
+		set tokenID to (random number from 1000 to 2024) as text
+		set commands to {"cd /Users/mac/Atomicals/atomicals-js;yarn cli mint-item \"#atomdragons2024\" \"" & tokenID & "\" \"./Dmint-json/item-" & tokenID & ".json\" --satsbyte=160"}
+		do script commands
+	end tell
+	delay 1 -- 延迟1秒，可根据需要调整
+end repeat
